@@ -139,3 +139,4458 @@ MoviePy is an open source software originally written by Zulko_ and released und
 .. _Stackoverflow: https://stackoverflow.com/
 .. _Github: https://github.com/Zulko/moviepy
 .. _Reddit: https://www.reddit.com/r/moviepy/
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+vvfrom moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)vfrom moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+vvfrom moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+from moviepy.editor import *
+
+# Video settings
+width, height = 720, 480
+duration = 6
+bg_color = (245, 245, 245)  # light gray
+
+background = ColorClip(size=(width, height), color=bg_color, duration=duration)
+
+# Load girl character image (transparent PNG)
+girl = ImageClip("teen_girl.png").set_duration(duration).resize(height=120)
+
+# Girl walking function: from x=150 to x=450 starting at t=2s
+def girl_pos(t):
+    if t < 2:
+        return (150, height-150)
+    elif t <= 4:
+        # move to BEWARE elevator over 2 seconds
+        x = 150 + (t-2)*(450-150)/2
+        return (x, height-150)
+    else:
+        return (450, height-150)
+
+girl = girl.set_position(girl_pos)
+
+# Create normal elevator (left)
+normal_elevator = ColorClip(size=(100, 200), color=(100, 100, 100), duration=duration)
+normal_text = TextClip("NORMAL", fontsize=24, color='white', font='Arial-Bold').set_position((160, 230)).set_duration(duration)
+normal_elevator = normal_elevator.set_position((150, height-220))
+
+# Create BEWARE elevator (right, hot pink)
+beware_elevator = ColorClip(size=(100, 200), color=(255, 105, 180), duration=duration)
+beware_text = TextClip("BEWARE", fontsize=24, color='white', font='Arial-Bold').set_position((460, 230)).set_duration(duration)
+beware_elevator = beware_elevator.set_position((450, height-220))
+
+# Optional: simple sparkle animation (small white dots)
+sparkle = ColorClip(size=(10, 10), color=(255, 255, 255), duration=0.1).set_position((480, 240))
+sparkles = [sparkle.set_start(0.5*i).set_end(0.5*i+0.1) for i in range(10)]
+
+# Combine all clips
+clips = [background, normal_elevator, normal_text, beware_elevator, beware_text, girl] + sparkles
+final = CompositeVideoClip(clips)
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+v
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
+
+
+# Write video
+final.write_videofile("girl_chooses_beware_elevator.mp4", fps=24)
